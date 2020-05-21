@@ -65,11 +65,7 @@ const Contact_Us = (props) => {
     <>
       {props.isSubmitted ? (
         <>
-          <Card>
-            <CardContent>
-              <Typography variant="h5" style={{textAlign:"center", margin:"1em auto"}}>We'll Reach out soon!</Typography>
-            </CardContent>
-          </Card>
+              <Typography variant="h4" color="secondary" style={{textAlign:"center", margin:"2em auto"}}>We'll Reach out soon!</Typography>
         </>
       ) : (
         <>

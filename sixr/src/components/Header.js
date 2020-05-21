@@ -26,16 +26,6 @@ function ElevationScroll(props) {
 }
 
 const useStyles = makeStyles((theme) => ({
-//   header_Margin: {
-//     ...theme.mixins.Toolbar,
-//     marginBottom: "3em",
-//     [theme.breakpoints.down("ms")] : {
-//         marginBottom: "2em"
-//     },
-//     [theme.breakpoints.down("xs")] : {
-//         marginBottom: "1.25em"
-//     },
-//   },
   sixr_logo: {
     padding: "30px",
     width: "10%",
@@ -58,24 +48,39 @@ function Header() {
   useEffect(() => {
     if (window.location.pathname === "/" && value !== 0) {
       setValue(0);
-    } else if (window.location.pathname === "/portfolio" && value !== 1) {
+    } else if (window.location.pathname === "/createcampaign" && value !== 1) {
       setValue(1);
-    } else if (window.location.pathname === "/about" && value !== 2) {
+    } else if (window.location.pathname === "/browseprojects" && value !== 2) {
       setValue(2);
-    } else if (window.location.pathname === "/contact" && value !== 3) {
+    } else if (window.location.pathname === "/about" && value !== 3) {
       setValue(3);
+    } else if (window.location.pathname === "/login" && value !== 4) {
+      setValue(4);
     }
   }, [value]);
 
-  const tabs = (
-      <>
-                <Tabs
+
+
+  return (
+    <>
+      <ElevationScroll>
+        <AppBar position="static" color="transparent">
+          <Toolbar>
+              <img className={header_Styles.sixr_logo} src={sixr_logo} alt="Site sixr_logo" />
+              <Tabs
               className={header_Styles.tabContainer}
               value={value}
               onChange={(event, value) => {
                 setValue(value);
               }}
             >
+               <Tab
+                className={header_Styles.tab}
+                label="Home"
+                component={Link}
+                to="/"
+                disableRipple
+              />
               <Tab
                 className={header_Styles.tab}
                 label="Create A Campaign"
@@ -105,16 +110,6 @@ function Header() {
                 disableRipple
               />
             </Tabs>
-      </>
-  )
-
-  return (
-    <>
-      <ElevationScroll>
-        <AppBar position="static" color="transparent">
-          <Toolbar>
-              <img className={header_Styles.sixr_logo} src={sixr_logo} alt="Site sixr_logo" />
-              {matches ? null : tabs}
           </Toolbar>
         </AppBar>
       </ElevationScroll>
