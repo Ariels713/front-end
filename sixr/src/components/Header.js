@@ -26,16 +26,16 @@ function ElevationScroll(props) {
 }
 
 const useStyles = makeStyles((theme) => ({
-  header_Margin: {
-    // ...theme.mixins.Toolbar,
-    // marginBottom: "3em",
-    // [theme.breakpoints.down("ms")] : {
-    //     marginBottom: "2em"
-    // },
-    // [theme.breakpoints.down("xs")] : {
-    //     marginBottom: "1.25em"
-    // },
-  },
+//   header_Margin: {
+//     ...theme.mixins.Toolbar,
+//     marginBottom: "3em",
+//     [theme.breakpoints.down("ms")] : {
+//         marginBottom: "2em"
+//     },
+//     [theme.breakpoints.down("xs")] : {
+//         marginBottom: "1.25em"
+//     },
+//   },
   sixr_logo: {
     padding: "30px",
     width: "10%",

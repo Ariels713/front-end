@@ -17,15 +17,10 @@ export default createMuiTheme({
         }
         
     },
-    overrides: {
-       MuiInputLabel: {
-           root: {
-               color: pink,
-               fontSize: "1rem"
-           }
-       },
-       MuiInput: {
-           
-       }
-    }
+    typography : {
+        tab: {
+            fontFamily: "Ubuntu",
+            fontSize:".85rem",
+        } 
+    },
 })

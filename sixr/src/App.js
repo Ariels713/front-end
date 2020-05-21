@@ -3,11 +3,15 @@ import React from 'react';
 
 //components
 import Header from './components/Header'
+import Footer from './components/Footer'
+import HomePage from './components/HomePage'
 
 function App() {
   return (
     <div>
       <Header />
+      <HomePage />
+      <Footer />
     </div>
   );
 }
