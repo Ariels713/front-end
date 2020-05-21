@@ -1,15 +1,14 @@
 const intialState = {
-    name:"",
-    email:"",
-    comment:"",
     isSubmitted:false,
-    isLoading:false,
-    error: false,
-    errorMessage:"Please Enter Your Email Address"
 }
 
 const contactUsReducer = (state = intialState, action ) => {
     switch(action.type) {
+        case "FORM_SUBMITTED" :
+            return {
+                ...state,
+                isSubmitted:true
+            }
         default :
         return state
     }

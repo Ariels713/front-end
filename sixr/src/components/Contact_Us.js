@@ -7,12 +7,10 @@ import {
   Typography,
   TextField,
   CircularProgress,
-  FormHelperText,
-  TextareaAutosize
 } from "@material-ui/core";
-import axios from "axios";
 import { makeStyles } from "@material-ui/core/styles";
-import fakeAPICallForTesting from "../utils/fakeAPICallForTesting";
+import { connect } from "react-redux";
+import { contactUsAction } from "../store/actions/contactUsAction";
 
 const useStyles = makeStyles((theme) => ({
   button_style: {
@@ -41,37 +39,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Contact_Us = () => {
+const Contact_Us = (props) => {
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    comment: "",
     loading: false,
   });
-  console.log("%c Form Data", "color:yellow", formData);
 
   const classes = useStyles();
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // setLoading(true);
-    // axios
-    // .post("http://localhost:5000/api/login", userData)
-    //   .then((res) => {
-    //     localStorage.setItem("token",res.data.payload);
-    //     history.push("/bubblepage")
-    //   })
-    //   .then(setLoading(false))
-    //   .then(() => {
-    //       setUserData({
-    //           username:"",
-    //           password:""
-    //       })
-    //   })
-
-    //   .catch(() => {
-    //       setError(true)
-    //   });
+    props.contactUsAction()
   };
 
   const handleChange = (event) => {
@@ -86,127 +63,75 @@ const Contact_Us = () => {
 
   return (
     <>
-        <Grid item>
+      {props.isSubmitted ? (
+        <>
+          <Card>
+            <CardContent>
+              <Typography variant="h5" style={{textAlign:"center", margin:"1em auto"}}>We'll Reach out soon!</Typography>
+            </CardContent>
+          </Card>
+        </>
+      ) : (
+        <>
+          <Grid item>
             <Typography
-            variant="h4"
-            style={{ textAlign: "center", marginTop: "1em" }}
+              variant="h4"
+              style={{ textAlign: "center", marginTop: "1em" }}
             >
-            Contact Us
+              Contact Us
             </Typography>
-        </Grid>
-        <Grid item>
+          </Grid>
+          <Grid item>
             <Grid
-            container
-            alignItems="center"
-            justify="center"
-            style={{ height: "20em" }}
+              container
+              alignItems="center"
+              justify="center"
+              style={{ height: "20em" }}
             >
-            <Card className={classes.cardStyle}>
-                <CardContent style={{textAlign:"center"}}>
-                <form>
+              <Card className={classes.cardStyle}>
+                <CardContent style={{ textAlign: "center" }}>
+                  <form onSubmit={handleSubmit}>
                     <Grid item>
-                    <TextField
+                      <TextField
                         label="Name"
                         name="name"
                         value={formData.name}
                         onChange={handleChange}
-                    /> 
+                      />
                     </Grid>
                     <Grid item>
-                        <TextField
-                            label="Email"
-                            name="email"
-                            value={formData.email}
-                            onChange={handleChange}
-                        />
+                      <TextField
+                        label="Email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                      />
                     </Grid>
                     <Grid item>
-                    {formData.loading === false ? (
-                        <Button
-                        variant="contained"
-                        className={classes.button_style}
-                        onClick={handleSubmit}
-                        disabled={formData.loading}
+                    <Button
+                          variant="contained"
+                          className={classes.button_style}
+                          onClick={handleSubmit}
+                          disabled={formData.loading}
                         >
-                        Submit
+                          Submit
                         </Button>
-                    ) : (
-                        <CircularProgress
-                        size={24}
-                        className={classes.loader_stylers}
-                        label="Loading"
-                        />
-                    )}
                     </Grid>
-                </form>
+                  </form>
                 </CardContent>
-            </Card>
+              </Card>
             </Grid>
-        </Grid>
+          </Grid>
+        </>
+      )}
     </>
   );
 };
 
-export default Contact_Us;
+const mapStateToProps = (state) => {
+  return {
+    isSubmitted: state.contactUsReducer.isSubmitted,
+  };
+};
 
-//   return (
-//     <Grid container direction="column" alignItems="center">
-//       <Grid item container direction="column" lg={4} >
-//         <Grid item>
-//           <Grid container direction="column">
-//             <Grid item>
-//               <Typography variant="h6" className={classes.login}>
-//                 Log In
-//               </Typography>
-//             </Grid>
-//             {error && (
-//               <FormHelperText className={classes.error_message}>
-//                 {errorMessage}
-//               </FormHelperText>
-//             )}
-//             <form>
-//               <Grid item>
-//                 <TextField
-//                   label="Email"
-//                   id="email"
-//                   name="username"
-//                   value={userData.username}
-//                   onChange={handleChange}
-//                 />
-//               </Grid>
-//               <Grid item>
-//                 <TextField
-//                   label="Password"
-//                   id="password"
-//                   name="password"
-//                   value={userData.password}
-//                   onChange={handleChange}
-//                 />
-//               </Grid>
-//               <Grid item>
-//                 {loading === false ? (
-//                   <Button
-//                     variant="contained"
-//                     className={classes.button_style}
-//                     onClick={handleSubmit}
-//                     disabled={loading}
-//                   >
-//                     Submit
-//                   </Button>
-//                 ) : (
-//                   <CircularProgress
-//                     size={24}
-//                     className={classes.loader_stylers}
-//                     label="Loading"
-//                   />
-//                 )}
-//               </Grid>
-//             </form>
-//           </Grid>
-//         </Grid>
-//       </Grid>
-//     </Grid>
-//   );
-// };
-
-// export default LogInForm;
+export default connect(mapStateToProps, { contactUsAction })(Contact_Us);

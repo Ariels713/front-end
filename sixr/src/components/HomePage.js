@@ -37,8 +37,8 @@ const useStyles = makeStyles((theme) => ({
     },
     mainCardFont: {
         ...theme.typography.tab,
-        marginTop:"3em",
-        marginBottom:"3em"
+        marginTop:"1em",
+        marginBottom:"1em"
       },
       cardStyle : {
           width:"500px",
@@ -62,7 +62,7 @@ const HomePage = () => {
                  <CardContent>
                      <Grid container direction="column" style={{textAlign:"center"}}>
                         <Grid item>
-                            <Typography variant="h3" style={{marginBottom:".5em"}}>Sixr</Typography>
+                            <Typography variant="h3">Sixr</Typography>
                         </Grid>
                         <Grid item>
                             <Typography variant="body1" className={homePage_styles.mainCardFont}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the.</Typography>
