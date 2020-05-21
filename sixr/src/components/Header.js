@@ -2,14 +2,11 @@ import React, { useState, useEffect } from "react";
 import {
   AppBar,
   Toolbar,
-  Typography,
   Tabs,
   Tab,
-  Button,
-  useMediaQuery,
 } from "@material-ui/core";
 import useScrollTrigger from "@material-ui/core/useScrollTrigger";
-import { makeStyles, useTheme } from "@material-ui/styles";
+import { makeStyles } from "@material-ui/styles";
 import sixr_logo from "../assets/sixr_logo.svg";
 import { Link } from "react-router-dom";
 
@@ -43,8 +40,7 @@ const useStyles = makeStyles((theme) => ({
 function Header() {
   const header_Styles = useStyles();
   const [value, setValue] = useState(0);
-  const theme = useTheme()
-  const matches = useMediaQuery(theme.breakpoints.down("sm"));
+
   useEffect(() => {
     if (window.location.pathname === "/" && value !== 0) {
       setValue(0);
@@ -85,7 +81,7 @@ function Header() {
                 className={header_Styles.tab}
                 label="Create A Campaign"
                 component={Link}
-                to="/createcapaign"
+                to="createcampange"
                 disableRipple
               />
               <Tab
