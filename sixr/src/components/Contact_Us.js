@@ -6,48 +6,19 @@ import {
   Button,
   Typography,
   TextField,
+  Paper,
 } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
 import { connect } from "react-redux";
 import { contactUsAction } from "../store/actions/contactUsAction";
-
-const useStyles = makeStyles((theme) => ({
-  button_style: {
-    marginTop: "1rem",
-    height: 35,
-    width: 160,
-    backgroundColor: "#FEC21E",
-    color: "white",
-  },
-  loader_stylers: {
-    color: "#FF0001",
-    position: "absolute",
-    // top: '10%',
-    left: "48%",
-    marginTop: "1.5rem",
-  },
-  login: {
-    marginTop: "5rem",
-  },
-  error_message: {
-    color: "#FF0001",
-    textAlign: "center",
-  },
-  cardStyle: {
-    width: "500px",
-  },
-}));
 
 const Contact_Us = (props) => {
   const [formData, setFormData] = useState({
     loading: false,
   });
 
-  const classes = useStyles();
-
   const handleSubmit = (event) => {
     event.preventDefault();
-    props.contactUsAction()
+    props.contactUsAction();
   };
 
   const handleChange = (event) => {
@@ -64,59 +35,81 @@ const Contact_Us = (props) => {
     <>
       {props.isSubmitted ? (
         <>
-              <Typography variant="h4" color="secondary" style={{textAlign:"center", margin:"2em auto"}}>We'll Reach out soon!</Typography>
+            <Typography
+              variant="h4"
+              color="secondary"
+              style={{ textAlign: "center", margin: "2em auto" }}
+            >
+              We'll Reach out soon!
+            </Typography>
+
         </>
       ) : (
         <>
-          <Grid item>
+          <div
+            style={{ padding: "15px", margin: "3em auto", maxWidth: "600px" }}
+          >
             <Typography
               variant="h4"
-              style={{ textAlign: "center", marginTop: "1em" }}
+              align="center"
+              gutterBottom
+              color="secondary"
             >
               Contact Us
             </Typography>
-          </Grid>
-          <Grid item>
-            <Grid
-              container
-              alignItems="center"
-              justify="center"
-              style={{ height: "20em" }}
-            >
-              <Card className={classes.cardStyle}>
-                <CardContent style={{ textAlign: "center" }}>
-                  <form onSubmit={handleSubmit}>
-                    <Grid item>
-                      <TextField
-                        label="Name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                      />
-                    </Grid>
-                    <Grid item>
-                      <TextField
-                        label="Email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                      />
-                    </Grid>
-                    <Grid item>
+            <form>
+              <Paper style={{ padding: "15px" }}>
+                <Grid container alignItems="flex-start" spacing={2}>
+                  <Grid item xs={6}>
+                    <TextField
+                      fullWidth
+                      required
+                      name="name"
+                      type="text"
+                      label="Name"
+                      variant="outlined"
+                      onChange={handleChange}
+                    />
+                  </Grid>
+                  <Grid item xs={6}>
+                    <TextField
+                      fullWidth
+                      required
+                      name="email"
+                      type="text"
+                      label="Email"
+                      variant="outlined"
+                      onChange={handleChange}
+                    />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <TextField
+                      fullWidth
+                      required
+                      name="userQuestion"
+                      type="text area"
+                      label="How Can We Help?"
+                      variant="outlined"
+                      rows={4}
+                      multiline
+                      onChange={handleChange}
+                    />
+                  </Grid>
+                  <Grid item style={{ marginTop: 16 }}>
                     <Button
-                          variant="contained"
-                          className={classes.button_style}
-                          onClick={handleSubmit}
-                          disabled={formData.loading}
-                        >
-                          Submit
-                        </Button>
-                    </Grid>
-                  </form>
-                </CardContent>
-              </Card>
-            </Grid>
-          </Grid>
+                      variant="contained"
+                      color="secondary"
+                      type="submit"
+                      style={{ width: "570px" }}
+                      onClick={handleSubmit}
+                    >
+                      Submit
+                    </Button>
+                  </Grid>
+                </Grid>
+              </Paper>
+            </form>
+          </div>
         </>
       )}
     </>
