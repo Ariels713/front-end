@@ -8,6 +8,7 @@ import HomePage from './components/HomePage'
 import createCampange from './components/CreateCampaign'
 import BrowseProjects from './components/BrowseProjects';
 import AboutUs from './components/AboutUs';
+import { LogIn } from './components/LogIn';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Route exact path="/createcampange" component={createCampange} />
       <Route exact path="/browseprojects" component={BrowseProjects} />
       <Route exact path="/about" component={AboutUs} />
+      <Route exact path="/login" component={LogIn} />
       <Footer />
     </div>
   );
