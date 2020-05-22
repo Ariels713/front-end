@@ -93,7 +93,7 @@ function Header() {
               />
               <Tab
                 className={header_Styles.tab}
-                label="About"
+                label="About Us"
                 component={Link}
                 to="/about"
                 disableRipple

@@ -56,7 +56,7 @@ const CreateCampaign = () => {
   const classes = useStyles();
   return (
     <>
-      <Grid item style={{ margin: "3em auto 0" }}>
+      <Grid item style={{ margin: "auto" }}>
         <Grid
           container
           alignItems="center"
