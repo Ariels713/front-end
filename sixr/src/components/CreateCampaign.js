@@ -67,7 +67,7 @@ const CreateCampaign = () => {
         </Grid>
       </Grid>
       <div style={{ padding: "15px", margin: "3em auto", maxWidth: "600px" }}>
-        <Typography variant="h4" align="center" gutterBottom color="secondary">
+        <Typography variant="h4" align="center" gutterBottom color="primary">
           Create Your Campaign
         </Typography>
         <form>
@@ -137,7 +137,7 @@ const CreateCampaign = () => {
               <Grid item style={{ marginTop: 16 }}>
                 <Button
                   variant="contained"
-                  color="secondary"
+                  color="primary"
                   type="submit"
                   style={{ width: "150px" }}
                 >

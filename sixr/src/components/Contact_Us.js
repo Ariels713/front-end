@@ -18,7 +18,7 @@ const Contact_Us = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    props.contactUsAction();
+    props.contactUsAction(formData);
   };
 
   const handleChange = (event) => {

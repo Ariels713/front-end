@@ -7,7 +7,9 @@ const contactUsReducer = (state = intialState, action ) => {
         case "FORM_SUBMITTED" :
             return {
                 ...state,
+
                 isSubmitted:true
+
             }
         default :
         return state
